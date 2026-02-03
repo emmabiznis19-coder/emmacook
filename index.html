@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmmaCook Pastelería</title>
+    <style>
+        :root {
+            --turquesa: #00b2bd;
+            --rosa-acento: #e91e63;
+            --gris-suave: #f4f4f4;
+        }
+
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; background-color: white; color: #333; }
+
+        /* ENCABEZADO TURQUESA ESTILO EMMACOOK */
+        header {
+            background-color: var(--turquesa);
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-main {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 3.5em;
+            margin: 0;
+            line-height: 0.8;
+        }
+
+        .logo-sub {
+            font-size: 1em;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .menu-icon {
+            border: 2px solid white;
+            border-radius: 8px;
+            padding: 8px 12px;
+            width: 30px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+        }
+
+        /* CUADRÍCULA DE PRODUCTOS (Esto arregla que no se vean uno abajo del otro) */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover; /* Esto hace que la foto se vea perfecta sin estirarse */
+        }
+
+        .card-body { padding: 20px; }
+        
+        .card h3 { font-size: 1.2em; color: #444; margin: 10px 0; }
+        
+        .price {
+            color: var(--rosa-acento);
+            font-weight: bold;
+            font-size: 1.5em;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .btn-buy {
+            background-color: var(--turquesa);
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 6px;
+            display: block;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-main">EmmaCook</div>
+    <div class="logo-sub">Pastelería</div>
+    <div class="menu-icon">
+        <span></span><span></span><span></span>
+    </div>
+</header>
+
+<div class="container">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" alt="Torta Chocolate">
+        <div class="card-body">
+            <h3>Torta de Chocolate Fudge</h3>
+            <span class="price">$25.990</span>
+            <a href="#" class="btn-buy">Agregar al carro</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="1000336862.png" alt="12 Cupcakes de Flores">
+        <div class="card-body">
+            <h3>12 Cupcakes de Flores</h3>
+            <span class="price">$35.000</span>
+            <a href="TU_LINK_MERCADO_PAGO" class="btn-buy">Comprar Ahora</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="1000336860.png" alt="6 Cupcakes de Flores">
+        <div class="card-body">
+            <h3>6 Cupcakes de Flores</h3>
+            <span class="price">$18.000</span>
+            <a href="TU_LINK_MERCADO_PAGO" class="btn-buy">Comprar Ahora</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src=" 1000336858.png" alt="Torta Moderna Alta">
+        <div class="card-body">
+            <h3>Torta Moderna Alta (20 pers.)</h3>
+            <span class="price">$43.000</span>
+            <a href="TU_LINK_MERCADO_PAGO" class="btn-buy">Comprar Ahora</a>
+        </div>
+    </div>
+
+
+</body>
+</html>
