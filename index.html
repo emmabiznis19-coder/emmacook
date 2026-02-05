@@ -51,12 +51,16 @@
 <body>
 
 <div class="anuncio-movil">
-    <span>⚠️ PEDIDOS MÍNIMOS 48H DE ANTICIPACIÓN — HAZ TU PEDIDO CON TIEMPO — DISFRUTA LO ARTESANAL ⚠️</span>
+    <span>👩‍🍳 PEDIDOS MÍNIMOS 48H DE ANTICIPACIÓN — HAZ TU PEDIDO CON TIEMPO — DISFRUTA LO ARTESANAL 🚚</span>
 </div>
 
-<header>
-    <h1>EmmaCook</h1>
-    <p>PASTELERÍA</p>
+<header style="display: flex; align-items: center; justify-content: center; background-color: #30bfc0; color: white; padding: 20px 10px;">
+    <img src="logo emmacook.png" alt="Logo EmmaCook" style="height: 60px; width: auto; margin-right: 15px; border-radius: 50%;">
+    
+    <div style="text-align: left;">
+        <h1 style="font-size: 35px; margin: 0; font-family: 'Brush Script MT', cursive;">EmmaCook</h1>
+        <p style="letter-spacing: 4px; font-size: 12px; margin: 0;">PASTELERÍA</p>
+    </div>
 </header>
 
 <div class="contenedor">
@@ -106,7 +110,7 @@
     }
 
     function pedir(nombre, precio) {
-        const telefono = "569XXXXXXXX"; // CAMBIA TU NÚMERO AQUÍ
+        const telefono = "975793103"; // CAMBIA TU NÚMERO AQUÍ
         const mensaje = `¡Hola EmmaCook! Quiero pedir: *${nombre}* ($${precio.toLocaleString('es-CL')})`;
         window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`);
     }
