@@ -3,162 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EmmaCook Pastelería</title>
+    <title>Mi Pastelería - Catálogo Pro</title>
     <style>
-        :root {
-            --turquesa: #00b2bd;
-            --rosa-acento: #e91e63;
-            --gris-suave: #f4f4f4;
-        }
-
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; background-color: white; color: #333; }
-
-        /* ENCABEZADO TURQUESA ESTILO EMMACOOK */
-        header {
-            background-color: var(--turquesa);
-            padding: 30px 20px;
-            text-align: center;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-main {
-            font-family: 'Brush Script MT', cursive;
-            font-size: 3.5em;
-            margin: 0;
-            line-height: 0.8;
-        }
-
-        .logo-sub {
-            font-size: 1em;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-weight: 300;
-        }
-
-        .menu-icon {
-            border: 2px solid white;
-            border-radius: 8px;
-            padding: 8px 12px;
-            width: 30px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .menu-icon span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background-color: white;
-            margin: 4px 0;
-        }
-
-        /* CUADRÍCULA DE PRODUCTOS (Esto arregla que no se vean uno abajo del otro) */
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: white;
-            border: 1px solid #eee;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover; /* Esto hace que la foto se vea perfecta sin estirarse */
-        }
-
-        .card-body { padding: 20px; }
+        body { font-family: 'Arial', sans-serif; background-color: #fff9fb; color: #4a3728; margin: 0; padding-bottom: 80px; }
         
-        .card h3 { font-size: 1.2em; color: #444; margin: 10px 0; }
+        /* AVISO SUPERIOR */
+        .aviso-pedido { background-color: #fff3cd; color: #856404; padding: 10px; font-weight: bold; font-size: 14px; border-bottom: 2px solid #ffeeba; text-align: center; }
         
-        .price {
-            color: var(--rosa-acento);
-            font-weight: bold;
-            font-size: 1.5em;
-            display: block;
-            margin-bottom: 20px;
+        header { background: #ff85a2; color: white; padding: 25px; text-align: center; }
+
+        .contenedor { max-width: 800px; margin: auto; padding: 20px; }
+
+        /* BUSCADOR */
+        .seccion-busqueda { margin-bottom: 20px; }
+        #buscador { 
+            width: 100%; padding: 12px; border-radius: 25px; border: 2px solid #ff85a2; 
+            font-size: 16px; outline: none; box-sizing: border-box;
         }
 
-        .btn-buy {
-            background-color: var(--turquesa);
-            color: white;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 6px;
-            display: block;
-            font-weight: bold;
-            text-transform: uppercase;
+        /* FILTROS DE CATEGORÍA */
+        .filtros { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+        .btn-categoria { 
+            background: white; border: 2px solid #ff85a2; color: #ff85a2; 
+            padding: 8px 18px; border-radius: 20px; cursor: pointer; font-weight: bold;
         }
+        .btn-categoria.activo { background: #ff85a2; color: white; }
+
+        /* ESTILO PRODUCTO */
+        .producto { background: white; border-radius: 15px; padding: 15px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); position: relative; }
+        .oculto { display: none; }
+        
+        .badge-oferta { position: absolute; top: 10px; left: 10px; background: #d81b60; color: white; padding: 5px 10px; border-radius: 5px; font-weight: bold; font-size: 12px; z-index: 10; }
+
+        /* CARRUSEL DE IMÁGENES */
+        .carrusel { display: flex; overflow-x: auto; gap: 10px; scroll-snap-type: x mandatory; border-radius: 10px; margin-bottom: 10px; }
+        .carrusel img { width: 100%; flex-shrink: 0; height: 280px; object-fit: cover; scroll-snap-align: start; }
+        
+        /* PRECIOS Y OFERTAS */
+        .contenedor-precio { text-align: center; margin: 10px 0; }
+        .precio-antes { text-decoration: line-through; color: #888; font-size: 0.9em; margin-right: 10px; }
+        .precio-ahora { font-size: 1.6em; color: #d81b60; font-weight: bold; }
+
+        /* BOTÓN WHATSAPP */
+        .btn-whatsapp { background-color: #25d366; color: white; border: none; padding: 15px; border-radius: 30px; width: 100%; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
+        .btn-whatsapp:hover { background-color: #128c7e; transform: scale(1.02); }
     </style>
 </head>
 <body>
 
+<div class="aviso-pedido">
+    ⚠️ Recordatorio: Pedidos con un mínimo de 48 horas de anticipación.
+</div>
+
 <header>
-    <div class="logo-main">EmmaCook</div>
-    <div class="logo-sub">Pastelería</div>
-    <div class="menu-icon">
-        <span></span><span></span><span></span>
-    </div>
+    <h1>🍰 Dulce Tentación</h1>
+    <p>Busca, elige y pide por WhatsApp</p>
 </header>
 
-<div class="container">
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" alt="Torta Chocolate">
-        <div class="card-body">
-            <h3>Torta de Chocolate Fudge</h3>
-            <span class="price">$25.990</span>
-            <a href="#" class="btn-buy">Agregar al carro</a>
-        </div>
+<div class="contenedor">
+    
+    <div class="productos salados ofertas">
+        <input type="text" id="buscador" placeholder="🔍 ¿Qué buscas hoy? (ej: Torta, Cheesecake...)" onkeyup="ejecutarBusqueda()">
     </div>
 
-    <div class="card">
-        <img src="1000336862.png" alt="12 Cupcakes de Flores">
-        <div class="card-body">
-            <h3>12 Cupcakes de Flores</h3>
-            <span class="price">$35.000</span>
-            <a href="TU_LINK_MERCADO_PAGO" class="btn-buy">Comprar Ahora</a>
-        </div>
+    <div class="filtros">
+        <button class="btn-categoria activo" onclick="filtrar('todos', this)">Todos</button>
+        <button class="btn-categoria" onclick="filtrar('tortas', this)">Tortas</button>
+        <button class="btn-categoria" onclick="filtrar('postres', this)">Postres</button>
+        <button class="btn-categoria" onclick="filtrar('ofertas', this)">Ofertas %</button>
     </div>
 
-    <div class="card">
-        <img src="1000336860.png" alt="6 Cupcakes de Flores">
-        <div class="card-body">
-            <h3>6 Cupcakes de Flores</h3>
-            <span class="price">$18.000</span>
-            <a href="TU_LINK_MERCADO_PAGO" class="btn-buy">Comprar Ahora</a>
+    <div id="lista-productos">
+        
+        <div class="producto tortas ofertas">
+            <div class="badge-oferta">OFERTA ESPECIAL</div>
+            <div class="carrusel">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600" alt="Torta 1">
+                <img src="https://images.unsplash.com/photo-1627834377411-8da5f4f09de8?w=600" alt="Torta 2">
+            </div>
+            <h3 class="nombre-producto" style="text-align:center;">Empanadas hojaldre</h3>
+            
+            <div class="contenedor-precio">
+                <span class="precio-antes">$25.000</span><p style="font-size: 12px; color: #666; margin: 5px 0;">Rellena con carne mechada,pollo,queso</p>                <span class="precio-ahora">$19.990</span>
+            </div>
+            <button class="btn-whatsapp" onclick="pedir('Torta Pompadour Familiar', 19990)">
+                Pedir por WhatsApp 📲
+            </button>
         </div>
-    </div>
 
-    <div class="card">
-        <img src=" 1000336858.png" alt="Torta Moderna Alta">
-        <div class="card-body">
-            <h3>Torta Moderna Alta (20 pers.)</h3>
-            <span class="price">$43.000</span>
-            <a href="TU_LINK_MERCADO_PAGO" class="btn-buy">Comprar Ahora</a>
+        <div class="producto postres">
+            <div class="carrusel">
+                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600" alt="Postre">
+            </div>
+            <h3 class="nombre-producto" style="text-align:center;">Mousse de Chocolate</h3>
+            <div class="contenedor-precio">
+                <span class="precio-ahora">$3.500</span>
+            </div>
+            <button class="btn-whatsapp" onclick="pedir('Mousse de Chocolate', 3500)">
+                Pedir por WhatsApp 📲
+            </button>
         </div>
-    </div>
 
+    </div>
+</div>
+
+<script>
+    // LÓGICA DEL BUSCADOR
+    function ejecutarBusqueda() {
+        let texto = document.getElementById('buscador').value.toLowerCase();
+        let productos = document.querySelectorAll('.producto');
+
+        productos.forEach(prod => {
+            let nombre = prod.querySelector('.nombre-producto').innerText.toLowerCase();
+            if (nombre.includes(texto)) {
+                prod.classList.remove('oculto');
+            } else {
+                prod.classList.add('oculto');
+            }
+        });
+    }
+
+    // LÓGICA DE CATEGORÍAS
+    function filtrar(categoria, boton) {
+        document.getElementById('buscador').value = ""; // Limpiar buscador
+        document.querySelectorAll('.btn-categoria').forEach(b => b.classList.remove('activo'));
+        boton.classList.add('activo');
+
+        document.querySelectorAll('.producto').forEach(prod => {
+            if (categoria === 'todos' || prod.classList.contains(categoria)) {
+                prod.classList.remove('oculto');
+            } else {
+                prod.classList.add('oculto');
+            }
+        });
+    }
+
+    // ENVÍO A WHATSAPP
+    function pedir(nombre, precio) {
+        // --- REEMPLAZA ESTE NÚMERO CON EL TUYO ---
+        const miTelefono = "5692618147"; 
+        
+        const precioClp = precio.toLocaleString('es-CL');
+        const mensaje = `¡Hola! Me encantó tu catálogo.\n🍰 *Quiero pedir:* ${nombre}\n💰 *Valor:* $${precioClp}\n\nEntiendo que el pedido es con 48h de anticipación. ¿Me confirmas para transferir?`;
+        
+        window.open(`https://wa.me/${miTelefono}?text=${encodeURIComponent(mensaje)}`);
+    }
+</script>
 
 </body>
 </html>
