@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Script de JavaScript para redireccionar de HTTP a HTTPS automáticamente -->
+    <!-- Script en JavaScript para forzar la redirección automática a HTTPS en emmacook.cl -->
     <script>
         if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
             location.replace(`https://${location.hostname}${location.pathname}${location.search}`);
@@ -14,7 +14,7 @@
     <title>Emmacook - Pastelería</title>
 
     <style>
-        /* Estilos generales del cuerpo */
+        /* Estilos generales del sitio */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -23,7 +23,7 @@
             color: #333;
         }
 
-        /* Encabezado del sitio */
+        /* Encabezado */
         header {
             background-color: #ffffff;
             text-align: center;
@@ -31,14 +31,13 @@
             border-bottom: 2px solid #f0f0f0;
         }
 
-        /* Título de la marca en rosa */
         h1.titulo-marca {
             margin: 0;
             color: #d81b60;
             font-size: 30px;
         }
 
-        /* Galería de productos */
+        /* Contenedor de la galería */
         .galeria {
             display: flex;
             flex-wrap: wrap;
@@ -49,7 +48,7 @@
             margin: 0 auto;
         }
 
-        /* Tarjeta individual de producto */
+        /* Tarjetas de productos */
         .producto {
             background: #ffffff;
             border: 1px solid #eee;
@@ -115,7 +114,7 @@
 
     <main class="galeria">
         <div class="producto">
-            <img src="1000336862.png" alt="Producto Emmacook">
+            <img src="1000336862.png" alt="Especialidad Emmacook">
             <div class="info">
                 <h3>Especialidad del Día</h3>
                 <p>Deliciosa preparación artesanal.</p>
@@ -125,14 +124,15 @@
         </div>
     </main>
 
+    <!-- Código JavaScript para pedidos a WhatsApp -->
     <script>
         /**
-         * Función que construye el enlace directo a WhatsApp.
-         * @param {string} nombreProducto - Nombre del ítem.
-         * @param {number} precio - Precio del producto.
+         * Redirige al cliente al chat de WhatsApp con el producto solicitado.
+         * @param {string} nombreProducto - Título de la preparación.
+         * @param {number} precio - Valor del producto.
          */
         function enviarPedido(nombreProducto, precio) {
-            const telefono = "569XXXXXXXX"; // Reemplaza con tu número real
+            const telefono = "569XXXXXXXX"; // Ingresa aquí tu número telefónico
             const texto = `Hola Emmacook! Quisiera pedir: ${nombreProducto} ($${precio})`;
             const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(texto)}`;
             window.open(url, '_blank');
