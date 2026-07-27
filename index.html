@@ -1,153 +1,150 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Título que aparece en la pestaña del navegador -->
+    <!-- Redirección automática de seguridad a HTTPS para tu dominio emmacook.cl -->
+    <script>
+        if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
+            location.replace(`https://${location.hostname}${location.pathname}${location.search}`);
+        }
+    </script>
+
+    <!-- Título de la pestaña del navegador -->
     <title>Emmacook - Pastelería</title>
 
-    <!-- Meta etiquetas para redes sociales y enlaces compartidos (WhatsApp, Facebook) -->
-    <meta property="og:title" content="Emmacook - Pastelería" />
-    <meta property="og:site_name" content="Emmacook" />
-    <meta property="og:description" content="Catálogo oficial de productos de Emmacook." />
-</head>
-<body>
-    <!-- Tu contenido HTML del sitio -->
-</body>
-</html>
+    <!-- Estilos CSS con los colores y la presentación original -->
+    <style>
+        /* Estilos generales del cuerpo de la página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
+            color: #333;
+        }
 
-        /* COLORES Y ESTILO GENERAL */
-        body { font-family: 'Arial', sans-serif; background-color: #f0f7f8; margin: 0; padding-bottom: 80px; }
-        
-        /* BARRA EN MOVIMIENTO (MARQUEE) */
-        .anuncio-movil { background: #333; color: white; padding: 10px 0; font-weight: bold; font-size: 14px; overflow: hidden; white-space: nowrap; }
-        .anuncio-movil span { display: inline-block; padding-left: 100%; animation: mensaje 15s linear infinite; }
-        @keyframes mensaje { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
+        /* Encabezado del sitio */
+        header {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 25px;
+            border-bottom: 2px solid #f0f0f0;
+        }
 
-        /* ENCABEZADO TURQUESA */
-        header { background-color: #30bfc0; color: white; padding: 40px 10px; text-align: center; }
-        header h1 { font-size: 45px; margin: 0; font-family: 'Brush Script MT', cursive; }
-        header p { letter-spacing: 4px; font-size: 14px; margin: 5px 0 0; }
+        /* Título principal con el color característico */
+        h1.titulo-marca {
+            margin: 0;
+            color: #d81b60;
+            font-size: 30px;
+        }
 
-        .contenedor { max-width: 800px; margin: auto; padding: 15px; }
+        /* Galería contenedora de productos */
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-        /* BUSCADOR TURQUESA */
-        #buscador { width: 100%; padding: 12px; border-radius: 25px; border: 2px solid #30bfc0; margin: 15px 0; box-sizing: border-box; font-size: 16px; }
+        /* Tarjeta individual de producto */
+        .producto {
+            background: #ffffff;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            width: 280px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
 
-        /* FILTROS (4 CATEGORÍAS) */
-        .filtros { display: flex; overflow-x: auto; gap: 8px; margin-bottom: 20px; padding-bottom: 10px; }
-        .btn-categoria { background: white; border: 1px solid #30bfc0; color: #30bfc0; padding: 8px 18px; border-radius: 20px; cursor: pointer; white-space: nowrap; font-weight: bold; }
-        .btn-categoria.activo { background: #30bfc0; color: white; }
+        .producto img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
 
-        /* DISEÑO DE 2 EN 2 */
-        .galeria { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        .producto { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
-        .oculto { display: none; }
+        .info {
+            padding: 15px;
+        }
 
-        /* CARRUSEL DE FOTOS */
-        .carrusel { width: 100%; height: 160px; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; }
-        .carrusel img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; scroll-snap-align: start; }
+        .info h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+        }
 
-        .info { padding: 10px; text-align: center; flex-grow: 1; }
-        .info h3 { font-size: 15px; margin: 5px 0; color: #333; }
-        .descripcion { font-size: 11px; color: #777; margin-bottom: 8px; height: 30px; overflow: hidden; }
+        .info p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
 
-        /* PRECIO ROJO VINO */
-        .precio-ahora { color: #800020; font-size: 18px; font-weight: bold; display: block; margin-bottom: 10px; }
+        .precio {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 15px;
+        }
 
-        /* BOTÓN AGREGAR TURQUESA */
-        .btn-whatsapp { background-color: #30bfc0; color: white; border: none; padding: 12px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 0 0 12px 12px; }
+        /* Botón estilo WhatsApp */
+        .btn-pedir {
+            background-color: #25d366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+
+        .btn-pedir:hover {
+            background-color: #128c7e;
+        }
     </style>
 </head>
 <body>
 
-<div class="anuncio-movil">
-    <span>👩‍🍳 PEDIDOS MÍNIMOS 48H DE ANTICIPACIÓN — HAZ TU PEDIDO CON TIEMPO — DISFRUTA LO ARTESANAL 🚚</span>
-</div>
+    <!-- Encabezado -->
+    <header>
+        <h1 class="titulo-marca">Emmacook Pastelería</h1>
+    </header>
 
-<header style="display: flex; align-items: center; justify-content: center; background-color: #30bfc0; color: white; padding: 20px 10px;">
-    <img src="logo%20emmacook.PNG" alt="Logo EmmaCook" style="height: 60px; width: auto; margin-right: 15px; border-radius: 50%;">
-    
-    <div style="text-align: left;">
-        <h1 style="font-size: 35px; margin: 0; font-family: 'Brush Script MT', cursive;">EmmaCook</h1>
-        <p style="letter-spacing: 4px; font-size: 12px; margin: 0;">PASTELERÍA</p>
-    </div>
-</header>
-    
-<div class="contenedor">
-    <input type="text" id="buscador" placeholder="¿Qué buscas hoy?..." onkeyup="ejecutarBusqueda()">
-
-    <div class="filtros">
-        <button class="btn-categoria activo" onclick="filtrar('todos', this)">Todos</button>
-        <button class="btn-categoria" onclick="filtrar('saladas', this)">Saladas</button>
-        <button class="btn-categoria" onclick="filtrar('tortas', this)">Tortas</button>
-        <button class="btn-categoria" onclick="filtrar('galletas', this)">Galletas</button>
-        <button class="btn-categoria" onclick="filtrar('postres', this)">Postres</button>
-    </div>
-
-    <div class="galeria" id="lista-productos">
-        <div class="producto saladas ofertas">
-    <div class="carrusel">
-        <img src="combo1.png" alt="Combo 1 Salado">
-    </div>
-    <div class="info">
-        <h3 class="nombre-producto">Combo 1 - Especial Eventos</h3>
-        <p class="descripcion" style="height: auto; font-size: 10px; line-height: 1.2;">
-            • 12 empanadas hojaldre<br>
-            • 12 mini pizza napolitana<br>
-            • 12 envuelto salchicha queso<br>
-            • 12 cachitos de carne<br>
-            • 12 mini cupcakes<br>
-            • 1 mini Torta (consultar sabor)
-        </p>
-        <span style="text-decoration: line-through; color: #999; font-size: 14px;">$149.990</span>
-        <span class="precio-ahora" style="color: #800020; margin-top: 0;">$119.990</span>
-        <p style="color: #30bfc0; font-weight: bold; font-size: 11px; margin: 5px 0;">¡ENTREGA GRATUITA!</p>
-    </div>
-    <button class="btn-whatsapp" onclick="pedir('Combo 1 Salado Especial', 119990)">AGREGAR AL CARRO</button>
-</div>
-
-        
-        <div class="producto tortas">
-            <div class="carrusel">
-                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400" alt="Torta">
-                <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=400" alt="Detalle">
-            </div>
+    <!-- Sección principal de productos -->
+    <main class="galeria">
+        <div class="producto">
+            <img src="1000336862.png" alt="Producto Emmacook">
             <div class="info">
-                <h3 class="nombre-producto">Torta Chocolate</h3>
-                <p class="descripcion">Relleno de manjar y nueces frescas.</p>
-                <span class="precio-ahora">$25.990</span>
+                <h3>Especialidad del Día</h3>
+                <p>Deliciosa preparación artesanal.</p>
+                <span class="precio">$4.500</span>
+                <button class="btn-pedir" onclick="enviarPedido('Especialidad del Día', 4500)">Pedir por WhatsApp</button>
             </div>
-            <button class="btn-whatsapp" onclick="pedir('Torta Chocolate', 25990)">AGREGAR AL CARRO</button>
         </div>
+    </main>
 
-    </div>
-</div>
-
-<script>
-    function ejecutarBusqueda() {
-        let texto = document.getElementById('buscador').value.toLowerCase();
-        document.querySelectorAll('.producto').forEach(prod => {
-            let nombre = prod.querySelector('.nombre-producto').innerText.toLowerCase();
-            prod.classList.toggle('oculto', !nombre.includes(texto));
-        });
-    }
-
-    function filtrar(categoria, boton) {
-        document.querySelectorAll('.btn-categoria').forEach(b => b.classList.remove('activo'));
-        boton.classList.add('activo');
-        document.querySelectorAll('.producto').forEach(prod => {
-            prod.classList.toggle('oculto', categoria !== 'todos' && !prod.classList.contains(categoria));
-        });
-    }
-
-    function pedir(nombre, precio) {
-        const telefono = "975793103"; // CAMBIA TU NÚMERO AQUÍ
-        const mensaje = `¡Hola EmmaCook! Quiero pedir: *${nombre}* ($${precio.toLocaleString('es-CL')})`;
-        window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`);
-    }
-</script>
+    <!-- Código JavaScript para la acción del botón -->
+    <script>
+        /**
+         * Redirige al cliente hacia WhatsApp con un mensaje estructurado.
+         * @param {string} nombreProducto - Nombre de la preparación.
+         * @param {number} precio - Valor en pesos.
+         */
+        function enviarPedido(nombreProducto, precio) {
+            // Reemplaza este número con el teléfono de tu negocio (incluyendo el código de país sin '+')
+            const telefono = "569XXXXXXXX"; 
+            const texto = `Hola Emmacook! Quisiera pedir: ${nombreProducto} ($${precio})`;
+            const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(texto)}`;
+            window.open(url, '_blank');
+        }
+    </script>
 
 </body>
 </html>
