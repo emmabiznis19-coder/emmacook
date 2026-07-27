@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Script en JavaScript que detecta la conexión y fuerza HTTPS -->
+    <!-- Script de JavaScript para redireccionar de HTTP a HTTPS automáticamente -->
     <script>
-        /**
-         * Verifica si el protocolo actual no es seguro ('http:') y no estamos en un entorno local.
-         * Si no es seguro, reemplaza la URL por la versión con 'https:'.
-         */
         if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
             location.replace(`https://${location.hostname}${location.pathname}${location.search}`);
         }
@@ -17,8 +13,8 @@
 
     <title>Emmacook - Pastelería</title>
 
-    <!-- Estilos CSS de la página web -->
     <style>
+        /* Estilos generales del cuerpo */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -27,6 +23,7 @@
             color: #333;
         }
 
+        /* Encabezado del sitio */
         header {
             background-color: #ffffff;
             text-align: center;
@@ -34,12 +31,14 @@
             border-bottom: 2px solid #f0f0f0;
         }
 
+        /* Título de la marca en rosa */
         h1.titulo-marca {
             margin: 0;
             color: #d81b60;
             font-size: 30px;
         }
 
+        /* Galería de productos */
         .galeria {
             display: flex;
             flex-wrap: wrap;
@@ -50,6 +49,7 @@
             margin: 0 auto;
         }
 
+        /* Tarjeta individual de producto */
         .producto {
             background: #ffffff;
             border: 1px solid #eee;
@@ -89,6 +89,7 @@
             margin-bottom: 15px;
         }
 
+        /* Botón estilo WhatsApp */
         .btn-pedir {
             background-color: #25d366;
             color: white;
@@ -126,12 +127,12 @@
 
     <script>
         /**
-         * Redirige al cliente hacia la API de WhatsApp con un mensaje predeterminado.
-         * @param {string} nombreProducto - Título del producto.
-         * @param {number} precio - Valor del producto.
+         * Función que construye el enlace directo a WhatsApp.
+         * @param {string} nombreProducto - Nombre del ítem.
+         * @param {number} precio - Precio del producto.
          */
         function enviarPedido(nombreProducto, precio) {
-            const telefono = "569XXXXXXXX"; // Reemplaza con tu número de teléfono
+            const telefono = "569XXXXXXXX"; // Reemplaza con tu número real
             const texto = `Hola Emmacook! Quisiera pedir: ${nombreProducto} ($${precio})`;
             const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(texto)}`;
             window.open(url, '_blank');
