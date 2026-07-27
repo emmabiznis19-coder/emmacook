@@ -3,197 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmmaCook | Pastelería de Autor</title>
+    <!-- Importar fuentes elegantes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     
-    <!-- Redirección automática hacia protocolo seguro HTTPS -->
-    <script>
-        if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
-            location.replace(`https://${location.hostname}${location.pathname}${location.search}`);
-        }
-    </script>
-
-    <title>Emmacook - Pastelería</title>
-
     <style>
-        /* Estilos generales de la página */
+        /* ESTILOS GENERALES */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Lato', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fafafa;
+            background-color: #fcfcfc;
             color: #333;
         }
 
-        /* Encabezado con Logo */
+        /* CABECERA TURQUESA */
         header {
-            background-color: #ffffff;
+            background-color: #00b2bd;
+            color: white;
             text-align: center;
-            padding: 20px 10px;
-            border-bottom: 2px solid #f0f0f0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            padding: 30px 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-
-        /* Configuración del Logo según tu archivo 'logo emmacook.PNG' */
-        .logo-header {
-            max-width: 180px;
-            height: auto;
-            display: block;
-            margin: 0 auto 10px auto;
-        }
-
-        h1.titulo-marca {
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
             margin: 0;
-            color: #d81b60;
-            font-size: 26px;
+            letter-spacing: 2px;
+        }
+        header p {
+            font-size: 1.2em;
+            margin: 5px 0 0 0;
+            font-style: italic;
         }
 
-        /* Galería responsiva para productos */
-        .galeria {
+        /* SECCIÓN DE DESCRIPCIÓN ELEGANTE */
+        .sobre-nosotros {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .sobre-nosotros h2 {
+            color: #00b2bd;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            margin-bottom: 5px;
+        }
+        .linea-decorativa {
+            width: 50px;
+            height: 2px;
+            background: #00b2bd;
+            margin: 15px auto;
+        }
+        .sobre-nosotros p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            font-weight: 300;
+        }
+
+        /* CATÁLOGO DE PRODUCTOS (GRILLA) */
+        .productos-contenedor {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 25px;
-            padding: 30px 15px;
-            max-width: 1100px;
+            gap: 30px;
+            padding: 40px 20px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Tarjeta individual de producto */
-        .producto {
-            background: #ffffff;
-            border: 1px solid #eaeaea;
+        /* TARJETA DE CADA PRODUCTO */
+        .card {
+            background: white;
             border-radius: 12px;
-            width: 260px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+            width: 300px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+        }
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover; /* Hace que la foto encaje perfecto sin deformarse */
+        }
+        .card-body {
+            padding: 20px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
-
-        .producto:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-        }
-
-        .producto img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .info {
-            padding: 15px;
-        }
-
-        .info h3 {
-            margin: 0 0 8px 0;
-            font-size: 18px;
+        .card-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
             color: #222;
+            margin: 0 0 10px 0;
         }
-
-        .info p {
-            font-size: 13px;
+        .card-body p.descripcion {
+            font-size: 0.95em;
             color: #666;
-            margin-bottom: 12px;
-            line-height: 1.4;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1; /* Empuja el botón y precio hacia abajo */
         }
-
         .precio {
-            font-size: 18px;
+            font-size: 1.3em;
+            color: #00b2bd;
             font-weight: bold;
-            color: #2e7d32;
-            display: block;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
-
-        /* Botón de pedido WhatsApp */
-        .btn-pedir {
-            background-color: #25d366;
+        .btn-comprar {
+            background-color: #00b2bd;
             color: white;
-            border: none;
-            padding: 10px 15px;
-            font-size: 14px;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
             font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.2s;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+        .btn-comprar:hover {
+            background-color: #008f97;
         }
 
-        .btn-pedir:hover {
-            background-color: #128c7e;
+        /* PIE DE PÁGINA (FOOTER) */
+        footer {
+            background-color: #222;
+            color: #ccc;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+        footer span {
+            color: #00b2bd;
+        }
+
+        /* BOTÓN FLOTANTE DE WHATSAPP */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-decoration: none;
+            transition: transform 0.3s;
+            z-index: 1000;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
 
+    <!-- CABECERA -->
     <header>
-        <!-- Referencia al archivo exacto del logo en GitHub -->
-        <img src="logo emmacook.PNG" alt="Logo Emmacook" class="logo-header">
-        <h1 class="titulo-marca">Emmacook Pastelería</h1>
+        <h1>EmmaCook</h1>
+        <p>Alta Pastelería Artesanal</p>
     </header>
 
-    <main class="galeria">
-        
-        <!-- Producto 1 -->
-        <div class="producto">
-            <img src="1000336862.png" alt="Especialidad Artesanal">
-            <div class="info">
-                <h3>Especialidad del Día</h3>
-                <p>Deliciosa preparación artesanal.</p>
-                <span class="precio">$4.500</span>
-                <button class="btn-pedir" onclick="enviarPedido('Especialidad del Día', 4500)">Pedir por WhatsApp</button>
+    <!-- SECCIÓN: SOBRE NOSOTROS -->
+    <section class="sobre-nosotros">
+        <h2>Alquimia Dulce y Diseño de Vanguardia</h2>
+        <div class="linea-decorativa"></div>
+        <p>
+            Elevamos la repostería a una experiencia sensorial sublime. 
+            Cada creación es un tributo a la estética minimalista y al rigor artesanal, donde 
+            ingredientes nobles se transforman en piezas de autor de una delicadeza inigualable. 
+            <strong>Sofisticación que se saborea.</strong>
+        </p>
+    </section>
+
+    <!-- SECCIÓN: PRODUCTOS -->
+    <div class="productos-contenedor">
+
+        <!-- PRODUCTO 1 -->
+        <div class="card">
+            <!-- RECUERDA: Cambia "foto-12-cupcakes.jpg" por el nombre real de tu foto -->
+            <img src="foto-12-cupcakes.jpg" alt="12 Cupcakes de Flores">
+            <div class="card-body">
+                <h3>12 Cupcakes de Flores</h3>
+                <p class="descripcion">El jardín más dulce en tu mesa. Una docena de cupcakes artesanales decorados a mano con delicadas flores de crema. Perfectos para regalar.</p>
+                <div class="precio">$35.000</div>
+                <!-- RECUERDA: Pon tu link de Mercado Pago aquí -->
+                <a href="TU_LINK_MERCADO_PAGO_AQUI" class="btn-comprar" target="_blank">Comprar Ahora</a>
             </div>
         </div>
 
-        <!-- Producto 2 -->
-        <div class="producto">
-            <img src="1000336860.png" alt="Pastelería Tradicional">
-            <div class="info">
-                <h3>Dulce Tradición</h3>
-                <p>Elaborado con insumos de alta calidad.</p>
-                <span class="precio">$5.000</span>
-                <button class="btn-pedir" onclick="enviarPedido('Dulce Tradición', 5000)">Pedir por WhatsApp</button>
+        <!-- PRODUCTO 2 -->
+        <div class="card">
+            <!-- RECUERDA: Cambia "foto-6-cupcakes.jpg" por el nombre real de tu foto -->
+            <img src="foto-6-cupcakes.jpg" alt="6 Cupcakes de Flores">
+            <div class="card-body">
+                <h3>6 Cupcakes de Flores</h3>
+                <p class="descripcion">Un detalle inolvidable. Media docena de nuestros famosos cupcakes de autor, con un diseño floral exclusivo que enamora a primera vista.</p>
+                <div class="precio">$18.000</div>
+                <!-- RECUERDA: Pon tu link de Mercado Pago aquí -->
+                <a href="TU_LINK_MERCADO_PAGO_AQUI" class="btn-comprar" target="_blank">Comprar Ahora</a>
             </div>
         </div>
 
-        <!-- Producto 3 -->
-        <div class="producto">
-            <img src="1000336858.png" alt="Postre Especial">
-            <div class="info">
-                <h3>Postre Especial</h3>
-                <p>Ideal para compartir en familia.</p>
-                <span class="precio">$6.000</span>
-                <button class="btn-pedir" onclick="enviarPedido('Postre Especial', 6000)">Pedir por WhatsApp</button>
+        <!-- PRODUCTO 3 -->
+        <div class="card">
+            <!-- RECUERDA: Cambia "foto-torta.jpg" por el nombre real de tu foto -->
+            <img src="foto-torta.jpg" alt="Torta Moderna Alta">
+            <div class="card-body">
+                <h3>Torta Moderna (20 pers.)</h3>
+                <p class="descripcion">Nuestra pieza maestra. Una torta imponente en altura y exquisita en cada capa. El centro de atención ideal para celebraciones superiores.</p>
+                <div class="precio">$55.000</div>
+                <!-- RECUERDA: Pon tu link de Mercado Pago aquí -->
+                <a href="TU_LINK_MERCADO_PAGO_AQUI" class="btn-comprar" target="_blank">Comprar Ahora</a>
             </div>
         </div>
 
-        <!-- Producto 4 (Combo) -->
-        <div class="producto">
-            <img src="combo1.png" alt="Combo Especial">
-            <div class="info">
-                <h3>Combo Pastelero N°1</h3>
-                <p>Combinación perfecta para tus reuniones.</p>
-                <span class="precio">$8.500</span>
-                <button class="btn-pedir" onclick="enviarPedido('Combo Pastelero N1', 8500)">Pedir por WhatsApp</button>
+        <!-- 
+        =========================================
+        PLANTILLA PARA AGREGAR NUEVOS PRODUCTOS 
+        (Copia desde <div class="card"> hasta </div> y pégalo arriba de este mensaje)
+        =========================================
+        <div class="card">
+            <img src="NOMBRE_DE_TU_FOTO.jpg" alt="Nombre del Producto">
+            <div class="card-body">
+                <h3>Nombre del Producto</h3>
+                <p class="descripcion">Descripción de tu nuevo producto aquí.</p>
+                <div class="precio">$00.000</div>
+                <a href="LINK_DE_PAGO" class="btn-comprar" target="_blank">Comprar Ahora</a>
             </div>
         </div>
+        -->
 
-    </main>
+    </div>
 
-    <!-- Script de integración con WhatsApp -->
-    <script>
-        /**
-         * Envía los datos del pedido al número telefónico asignado a través de WhatsApp Web/App.
-         * @param {string} nombreProducto - Título del producto.
-         * @param {number} precio - Valor formateado.
-         */
-        function enviarPedido(nombreProducto, precio) {
-            const telefono = "56975793103";
-            const texto = `Hola Emmacook! Quisiera pedir: ${nombreProducto} ($${precio})`;
-            const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(texto)}`;
-            window.open(url, '_blank');
-        }
-    </script>
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>Hecho con amor por <span>EmmaCook</span> - Santiago, Chile</p>
+        <p>© 2026 Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- BOTÓN DE WHATSAPP FLOTANTE -->
+    <!-- RECUERDA: Cambia el "569XXXXX" por tu número real con código de país, sin el "+" -->
+    <a href="https://wa.me/56912345678?text=Hola%20EmmaCook,%20quiero%20hacer%20una%20consulta" class="whatsapp-btn" target="_blank">
+        <!-- Ícono de WhatsApp (SVG) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c-.003 1.396.366 2.76 1.056 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </a>
 
 </body>
 </html>
