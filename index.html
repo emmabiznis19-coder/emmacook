@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Script en JavaScript para forzar la redirección automática a HTTPS en emmacook.cl -->
+    <!-- Redirección automática hacia protocolo seguro HTTPS -->
     <script>
         if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
             location.replace(`https://${location.hostname}${location.pathname}${location.search}`);
@@ -14,49 +14,64 @@
     <title>Emmacook - Pastelería</title>
 
     <style>
-        /* Estilos generales del sitio */
+        /* Estilos generales de la página */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #fafafa;
             color: #333;
         }
 
-        /* Encabezado */
+        /* Encabezado con Logo */
         header {
             background-color: #ffffff;
             text-align: center;
-            padding: 25px;
+            padding: 20px 10px;
             border-bottom: 2px solid #f0f0f0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        /* Configuración del Logo según tu archivo 'logo emmacook.PNG' */
+        .logo-header {
+            max-width: 180px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px auto;
         }
 
         h1.titulo-marca {
             margin: 0;
             color: #d81b60;
-            font-size: 30px;
+            font-size: 26px;
         }
 
-        /* Contenedor de la galería */
+        /* Galería responsiva para productos */
         .galeria {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             padding: 30px 15px;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        /* Tarjetas de productos */
+        /* Tarjeta individual de producto */
         .producto {
             background: #ffffff;
-            border: 1px solid #eee;
-            border-radius: 10px;
-            width: 280px;
+            border: 1px solid #eaeaea;
+            border-radius: 12px;
+            width: 260px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
             text-align: center;
+        }
+
+        .producto:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
 
         .producto img {
@@ -70,14 +85,16 @@
         }
 
         .info h3 {
-            margin: 0 0 10px 0;
-            font-size: 20px;
+            margin: 0 0 8px 0;
+            font-size: 18px;
+            color: #222;
         }
 
         .info p {
-            font-size: 14px;
+            font-size: 13px;
             color: #666;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            line-height: 1.4;
         }
 
         .precio {
@@ -85,20 +102,21 @@
             font-weight: bold;
             color: #2e7d32;
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
-        /* Botón estilo WhatsApp */
+        /* Botón de pedido WhatsApp */
         .btn-pedir {
             background-color: #25d366;
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 10px 15px;
             font-size: 14px;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
             width: 100%;
+            transition: background-color 0.2s;
         }
 
         .btn-pedir:hover {
@@ -109,12 +127,16 @@
 <body>
 
     <header>
+        <!-- Referencia al archivo exacto del logo en GitHub -->
+        <img src="logo emmacook.PNG" alt="Logo Emmacook" class="logo-header">
         <h1 class="titulo-marca">Emmacook Pastelería</h1>
     </header>
 
     <main class="galeria">
+        
+        <!-- Producto 1 -->
         <div class="producto">
-            <img src="1000336862.png" alt="Especialidad Emmacook">
+            <img src="1000336862.png" alt="Especialidad Artesanal">
             <div class="info">
                 <h3>Especialidad del Día</h3>
                 <p>Deliciosa preparación artesanal.</p>
@@ -122,17 +144,51 @@
                 <button class="btn-pedir" onclick="enviarPedido('Especialidad del Día', 4500)">Pedir por WhatsApp</button>
             </div>
         </div>
+
+        <!-- Producto 2 -->
+        <div class="producto">
+            <img src="1000336860.png" alt="Pastelería Tradicional">
+            <div class="info">
+                <h3>Dulce Tradición</h3>
+                <p>Elaborado con insumos de alta calidad.</p>
+                <span class="precio">$5.000</span>
+                <button class="btn-pedir" onclick="enviarPedido('Dulce Tradición', 5000)">Pedir por WhatsApp</button>
+            </div>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="producto">
+            <img src="1000336858.png" alt="Postre Especial">
+            <div class="info">
+                <h3>Postre Especial</h3>
+                <p>Ideal para compartir en familia.</p>
+                <span class="precio">$6.000</span>
+                <button class="btn-pedir" onclick="enviarPedido('Postre Especial', 6000)">Pedir por WhatsApp</button>
+            </div>
+        </div>
+
+        <!-- Producto 4 (Combo) -->
+        <div class="producto">
+            <img src="combo1.png" alt="Combo Especial">
+            <div class="info">
+                <h3>Combo Pastelero N°1</h3>
+                <p>Combinación perfecta para tus reuniones.</p>
+                <span class="precio">$8.500</span>
+                <button class="btn-pedir" onclick="enviarPedido('Combo Pastelero N1', 8500)">Pedir por WhatsApp</button>
+            </div>
+        </div>
+
     </main>
 
-    <!-- Código JavaScript para pedidos a WhatsApp -->
+    <!-- Script de integración con WhatsApp -->
     <script>
         /**
-         * Redirige al cliente al chat de WhatsApp con el producto solicitado.
-         * @param {string} nombreProducto - Título de la preparación.
-         * @param {number} precio - Valor del producto.
+         * Envía los datos del pedido al número telefónico asignado a través de WhatsApp Web/App.
+         * @param {string} nombreProducto - Título del producto.
+         * @param {number} precio - Valor formateado.
          */
         function enviarPedido(nombreProducto, precio) {
-            const telefono = "569XXXXXXXX"; // Ingresa aquí tu número telefónico
+            const telefono = "56975793103";
             const texto = `Hola Emmacook! Quisiera pedir: ${nombreProducto} ($${precio})`;
             const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(texto)}`;
             window.open(url, '_blank');
